@@ -1,0 +1,99 @@
+## NOTES
+
+
+## CONTENT STRUCTURE
+* Images: 18 - 64
+* Headings: 18 - 39
+* Characters: 8364 - 18865
+* Paragraphs: 29 - Infinity
+* Words: 1191 - 1369
+
+## IMPORTANT TERMS TO USE
+_Make sure to include those as many times as stated._
+* weapons detection for military bases: 1 - 1
+* threat detection: 5 - 16
+* military installations: 2 - 5
+* weapon detection: 10 - 22
+* security personnel: 1 - 2
+* operational efficiency: 1 - 2
+* security teams: 2 - 3
+* artificial intelligence: 2 - 6
+* ai powered: 4 - 13
+* government facilities: 1 - 3
+* ai powered threat detection: 1 - 1
+* security systems: 2 - 7
+* false alarms: 2 - 5
+* critical infrastructure: 1 - 2
+* detection system: 7 - 16
+* enhance safety: 1 - 1
+* military bases: 2 - 6
+* visual gun detection: 1 - 3
+* public safety: 2 - 3
+* base security operations: 1 - 3
+* high security environments: 1 - 1
+* facial recognition: 1 - 3
+* potential threats: 2 - 5
+* military grade security: 1 - 3
+* air force: 2 - 8
+* current security measures: 1 - 3
+* chief operations officer: 1 - 3
+* secure environment: 1 - 1
+* metal detectors: 3 - 11
+* advanced technology: 1 - 3
+* real time threat detection: 2 - 5
+* physical security: 1 - 2
+* unique security challenges: 1 - 2
+* concealed weapons: 1 - 2
+* ai systems: 1 - 3
+* military sites: 1 - 3
+* government buildings: 1 - 3
+* evolving threats: 1 - 3
+* healthcare facilities: 1 - 2
+* metal objects: 1 - 3
+* security operations: 1 - 3
+* critical assets: 1 - 3
+* gun violence: 1 - 2
+* corporate offices: 1 - 1
+* existing cameras: 1 - 2
+* human error: 1 - 3
+* existing security: 2 - 7
+* high security standards: 1 - 1
+* base security: 3 - 11
+* bus terminals: 1 - 1
+* high traffic areas: 1 - 2
+* situational awareness: 1 - 3
+* x ray: 2 - 3
+* intelligent screening: 1 - 3
+* various environments: 1 - 1
+* provide peace: 1 - 2
+* linev systems: 2 - 8
+* public spaces: 1 - 3
+* urgent need: 1 - 1
+* real time alerts: 1 - 1
+* security: 23 - 34
+* decision making: 1 - 3
+* restricted areas: 1 - 3
+* prohibited items: 1 - 1
+* detailed view: 1 - 1
+* blind spots: 1 - 2
+* systems: 20 - 32
+* detection technology: 2 - 3
+* specific security needs: 1 - 1
+* technology: 7 - 12
+* security measures: 2 - 3
+* threats: 14 - 25
+* equipment: 2 - 4
+* detection: 24 - 41
+* safety: 4 - 7
+* solutions: 6 - 13
+* protection: 3 - 7
+
+## OTHER RELEVANT TERMS
+_Treat them as inspiration and include as many as possible_
+
+
+## QUESTIONS TO ANSWER
+* How does a weapons detection system work?
+* Can I carry a weapon on a military base?
+* Are there cameras that can detect firearms?
+* Can a gun be detected?

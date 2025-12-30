@@ -1,0 +1,93 @@
+## NOTES
+
+
+## CONTENT STRUCTURE
+* Images: 16 - 35
+* Headings: 24 - 48
+* Characters: 10385 - 18865
+* Paragraphs: 31 - Infinity
+* Words: 1471 - 1691
+
+## IMPORTANT TERMS TO USE
+_Make sure to include those as many times as stated._
+* weapons detection for government buildings: 1 - 1
+* weapons detection systems: 15 - 17
+* government buildings: 3 - 6
+* existing security infrastructure: 1 - 3
+* security personnel: 2 - 4
+* security measures: 3 - 4
+* potential threats: 5 - 9
+* healthcare facilities: 3 - 5
+* secure environment: 1 - 3
+* weapons detection: 30 - 41
+* security teams: 3 - 5
+* weapons detection technology: 2 - 4
+* weapons detection solutions: 3 - 7
+* ai powered: 3 - 7
+* concealed weapons: 3 - 11
+* security solutions: 2 - 4
+* false alarms: 1 - 3
+* operational efficiency: 1 - 3
+* detection technology: 3 - 8
+* metal detectors: 6 - 13
+* concealed weapons detection: 3 - 8
+* maintaining high security standards: 1 - 2
+* detection systems: 19 - 29
+* public safety: 1 - 2
+* physical security: 1 - 4
+* traditional metal detectors: 2 - 8
+* threat detection: 2 - 4
+* artificial intelligence: 3 - 8
+* specific security: 1 - 2
+* detect weapons: 1 - 2
+* public spaces: 2 - 4
+* maintaining safety: 1 - 4
+* unique security challenges: 1 - 1
+* weapons screening: 3 - 15
+* physical contact: 1 - 3
+* homeland security: 1 - 1
+* high throughput: 3 - 6
+* metal objects: 1 - 4
+* advanced solutions: 1 - 3
+* sensor technology: 2 - 5
+* high security environments: 1 - 1
+* key factors: 1 - 2
+* enhance safety: 1 - 3
+* advanced algorithms: 1 - 1
+* concealed threats: 1 - 3
+* emergency protocols: 1 - 1
+* detect guns: 1 - 1
+* machine learning algorithms: 1 - 1
+* metal detection: 1 - 2
+* gun detection: 3 - 8
+* firearm threats: 1 - 2
+* entry points: 1 - 3
+* key features: 1 - 3
+* high traffic areas: 1 - 2
+* seamless integration: 1 - 3
+* various environments: 1 - 2
+* gun violence: 1 - 2
+* proactive approach: 1 - 1
+* medical centers: 1 - 3
+* streamline operations: 1 - 2
+* government facilities: 1 - 2
+* security staff: 1 - 2
+* real time alerts: 1 - 2
+* campus safety: 1 - 1
+* business continuity: 1 - 1
+* corporate offices: 1 - 2
+* added security: 1 - 2
+* existing security: 2 - 4
+* private spaces: 1 - 3
+* welcoming environment: 1 - 1
+* situational awareness: 1 - 1
+* security: 32 - 50
+* high security standards: 1 - 2
+* bus terminals: 1 - 2
+* person's body: 1 - 2
+
+## OTHER RELEVANT TERMS
+_Treat them as inspiration and include as many as possible_
+
+
+## QUESTIONS TO ANSWER

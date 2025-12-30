@@ -1,167 +1,426 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NLP Terms Extractor</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    animation: {
-                        'fade-in': 'fadeIn 0.5s ease-in-out',
-                        'slide-up': 'slideUp 0.3s ease-out',
-                        'bounce-gentle': 'bounceGentle 0.6s ease-in-out',
-                    },
-                    keyframes: {
-                        fadeIn: {
-                            '0%': { opacity: '0' },
-                            '100%': { opacity: '1' },
-                        },
-                        slideUp: {
-                            '0%': { transform: 'translateY(20px)', opacity: '0' },
-                            '100%': { transform: 'translateY(0)', opacity: '1' },
-                        },
-                        bounceGentle: {
-                            '0%, 100%': { transform: 'translateY(0)' },
-                            '50%': { transform: 'translateY(-5px)' },
-                        }
-                    }
-                }
-            }
-        }
-    </script>
-    <style>
-        body {
-            font-family: 'Roboto', sans-serif;
-        }
-
-        .gradient-bg {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        }
-
-        .card-hover {
-            transition: all 0.3s ease;
-        }
-
-        .card-hover:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-        }
-
-        .upload-area {
-            border: 2px dashed #cbd5e1;
-            transition: all 0.3s ease;
-        }
-
-        .upload-area:hover {
-            border-color: #3b82f6;
-            background-color: #f8fafc;
-        }
-
-        .upload-area.dragover {
-            border-color: #3b82f6;
-            background-color: #eff6ff;
-        }
-
-        .toast {
-            animation: slideIn 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-            transform-origin: right center;
-        }
-
-        @keyframes slideIn {
-            from {
-                transform: translateX(100%) scale(0.8);
-                opacity: 0;
-            }
-
-            to {
-                transform: translateX(0) scale(1);
-                opacity: 1;
-            }
-        }
-    </style>
-</head>
-
-
-<body class="bg-gradient-to-br from-slate-50 to-slate-100 min-h-screen">
-    <!-- Header -->
-    <header class="gradient-bg text-white py-2 px-4 fixed top-0 left-0 w-full z-40">
-        <div class="max-w-4xl mx-auto flex flex-col items-center justify-center gap-1">
-            <h1 class="text-2xl md:text-3xl font-bold mb-0 animate-fade-in tracking-tight">
-                🔍 NLP Terms Extractor
-            </h1>
-            <p class="text-sm md:text-base text-blue-100 animate-fade-in animation-delay-200 font-medium">
-                Extract and organize important terms from your text files
-            </p>
-        </div>
-    </header>
-    <main class="max-w-6xl mx-auto px-4 py-8" style="padding-top:64px;">
-        <!-- Upload Section -->
-        <div class="flex justify-center mt-10 mb-8">
-            <!-- Upload Box as Card -->
-            <div class="bg-white border border-gray-200 shadow-lg p-8 max-w-md w-full rounded-2xl" id="uploadArea"
-                style="cursor:pointer;">
-                <div class="text-center">
-                    <div class="text-4xl mb-3 text-blue-500">📁</div>
-                    <h3 class="text-lg font-semibold text-gray-700 mb-2">
-                        Upload TXT Files
-                    </h3>
-                    <p class="text-gray-500 mb-4 text-sm">
-                        Drag and drop or click to browse
-                    </p>
-                    <!-- Add ZIP name input -->
-                    <input type="text" id="zipNameInput"
-                        class="border border-gray-300 rounded-full px-4 py-2 mb-4 w-full text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-                        placeholder="Enter ZIP file name (default: extracted_terms.zip)">
-                    <div class="flex gap-3 justify-center">
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>NLP Terms Extractor</title>
+      <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+      <!-- <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&display=swap" rel="stylesheet"> -->
+      <link rel="shortcut icon" type="image/png" href="https://cdn-icons-png.flaticon.com/512/18063/18063817.png">
+      <script src="https://cdn.tailwindcss.com"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+         integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+         crossorigin="anonymous" referrerpolicy="no-referrer" />
+      <script src="https://cdn.lordicon.com/lordicon.js"></script>
+      <script src="script.js"></script>
+      <script>
+         tailwind.config = {
+             theme: {
+                 extend: {
+                     animation: {
+                         'fade-in': 'fadeIn 0.5s ease-in-out',
+                         'slide-up': 'slideUp 0.3s ease-out',
+                         'bounce-gentle': 'bounceGentle 0.6s ease-in-out',
+                     },
+                     keyframes: {
+                         fadeIn: {
+                             '0%': { opacity: '0' },
+                             '100%': { opacity: '1' },
+                         },
+                         slideUp: {
+                             '0%': { transform: 'translateY(20px)', opacity: '0' },
+                             '100%': { transform: 'translateY(0)', opacity: '1' },
+                         },
+                         bounceGentle: {
+                             '0%, 100%': { transform: 'translateY(0)' },
+                             '50%': { transform: 'translateY(-5px)' },
+                         }
+                     }
+                 }
+             }
+         }
+      </script>
+      <style>
+         body {
+         font-family: 'Inter', sans-serif;
+         }
+         .gradient-bg {
+         background: linear-gradient(90deg, #008278 0%, #22c570 100%);
+         }
+         .card-hover {
+         transition: all 0.3s ease;
+         }
+         .card-hover:hover {
+         transform: translateY(-8px);
+         box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+         }
+         .upload-area {
+         border: 2px dashed #cbd5e1;
+         transition: all 0.3s ease;
+         }
+         .upload-area:hover {
+         border-color: #3b82f6;
+         background-color: #f8fafc;
+         }
+         .upload-area.dragover {
+         border-color: #3b82f6;
+         background-color: #eff6ff;
+         }
+         .toast {
+         animation: slideIn 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+         transform-origin: right center;
+         }
+         @keyframes slideIn {
+         from {
+         transform: translateX(100%) scale(0.8);
+         opacity: 0;
+         }
+         to {
+         transform: translateX(0) scale(1);
+         opacity: 1;
+         }
+         }
+         /* Animation for fade-in */
+         @keyframes fadeIn {
+         from {
+         opacity: 0;
+         transform: translateY(-5px);
+         }
+         to {
+         opacity: 1;
+         transform: translateY(0);
+         }
+         }
+         .animate-fade-in {
+         animation: fadeIn 0.3s ease-out forwards;
+         }
+         /* Responsive adjustments */
+         @media (max-width: 640px) {
+         .container {
+         padding-left: 1rem;
+         padding-right: 1rem;
+         }
+         #uploadArea {
+         padding: 2rem 1rem;
+         }
+         #zipNameInput {
+         font-size: 0.875rem;
+         }
+         }
+      </style>
+   </head>
+   <body class="bg-[honeydew] from-slate-50 to-slate-100 min-h-screen flex flex-col">
+      <!-- Header -->
+      <header class="gradient-bg text-white fixed top-0 left-0 w-full z-40 shadow-md">
+         <div class="container mx-auto px-4 py-2">
+            <div class="flex flex-col md:flex-row md:items-center justify-between gap-3">
+               <!-- Logo and Title -->
+               <div class="flex items-center gap-2">
+                  <div class="text-2xl">🔍</div>
+                  <div class="flex flex-col">
+                     <h1 class="text-lg md:text-xl font-bold tracking-tight">NLP
+                        Terms Extractor
+                     </h1>
+                     <p class="text-xs text-white-100 opacity-100">Extract
+                        terms from text files
+                     </p>
+                  </div>
+               </div>
+               <!-- Upload Section - Compact Card -->
+               <div class="bg-white/10 backdrop-blur-sm border border-white/20 shadow-sm p-3 rounded-xl max-w-md w-full hover:bg-white/15 transition-colors duration-200"
+                  id="uploadArea" style="cursor:pointer;">
+                  <div class="flex items-center justify-between gap-3">
+                     <!-- Left side: Info and input -->
+                     <div class="flex-1 min-w-0">
+                        <!-- <div class="flex items-center gap-2 mb-1">
+                           <div class="text-lg">📁</div>
+                           <span class="text-sm font-medium truncate">Upload TXT Files</span>
+                           </div> -->
+                        <input type="text" id="zipNameInput"
+                           class="w-full bg-white/20 border border-white/30 rounded-xl px-3 py-1 text-sm placeholder-white/70 focus:outline-none focus:bg-white/20 focus:border-white/50"
+                           placeholder="ZIP name (optional)">
+                     </div>
+                     <!-- Right side: Buttons -->
+                     <div class="flex items-center gap-2">
                         <button
-                            class="bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white font-medium py-2.5 px-6 rounded-full transition-all duration-200 shadow-md hover:shadow-lg">
-                            Choose Files
+                           class="bg-white text-[#176c26] hover:bg-blue-50 font-medium py-1.5 px-4 rounded-xl transition-colors duration-200 text-sm whitespace-nowrap shadow-sm">
+                        Choose Files
                         </button>
                         <button id="downloadAllBtn"
-                            class="bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-medium py-2.5 px-6 rounded-full transition-all duration-200 shadow-md hover:shadow-lg hidden">
-                            Download All
+                           class="bg-[#111827] hover:bg-green-900 text-white font-medium py-1.5 px-4 rounded-xl transition-colors duration-200 text-sm whitespace-nowrap shadow-sm hidden">
+                        Download
                         </button>
-                    </div>
-                </div>
-                <input type="file" id="fileInput" multiple accept=".txt" class="hidden">
+                     </div>
+                  </div>
+                  <input type="file" id="fileInput" multiple accept=".txt" class="hidden">
+               </div>
             </div>
-        </div>
-
-        <!-- Results Section -->
-        <div id="resultsSection" class="hidden">
-            <h2 class="text-2xl font-bold text-gray-800 mb-6 text-center">Extracted Terms</h2>
+         </div>
+      </header>
+      <main class="max-w-6xl mx-auto px-4 py-8" style="padding-top:64px;">
+         <!-- Upload Section -->
+         <div class="flex justify-center mt-10 mb-8">
+            <!-- Upload Box as Card -->
+         </div>
+         <!-- Results Section -->
+         <div id="resultsSection" class="hidden">
+            <h2 class="text-2xl font-bold text-gray-800 mb-6 text-center">Extracted
+               Terms
+            </h2>
             <div id="resultsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <!-- Cards will be dynamically added here -->
+               <!-- Cards will be dynamically added here -->
             </div>
-        </div>
-
-        <!-- Empty State -->
-        <div id="emptyState" class="text-center py-16 animate-fade-in">
-            <div class="text-8xl mb-6">📝</div>
-            <h3 class="text-2xl font-semibold text-gray-700 mb-2">
-                Ready to Extract Terms
-            </h3>
-            <p class="text-gray-500 max-w-md mx-auto">
-                Upload your text files to start extracting important terms and keywords automatically
-            </p>
-        </div>
-    </main>
-
-    <!-- Loading Overlay -->
-    <div id="loadingOverlay" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
-        <div class="bg-white rounded-2xl p-8 text-center">
+         </div>
+         <!-- Empty State -->
+         <div id="emptyState" class="text-center py-16 animate-fade-in">
+            <div class="text-8xl mb-6">
+               <div class="flex items-center justify-center gap-4">
+                  <div class="flex justify-center items-center mt-8">
+                     <lord-icon src="https://cdn.lordicon.com/hnqamtrw.json" trigger="loop"
+                        colors="primary:#9cf4a7,secondary:#2ca58d"
+                        style="width:250px;height:250px; transform-style: preserve-3d; perspective: 1000px;"
+                        class="animate-3d-float">
+                     </lord-icon>
+                  </div>
+                  <style>
+                     @keyframes float3D {
+                     0% {
+                     transform: rotateY(0deg) rotateX(0deg) translateY(0);
+                     }
+                     25% {
+                     transform: rotateY(15deg) rotateX(-5deg) translateY(-10px);
+                     }
+                     50% {
+                     transform: rotateY(-15deg) rotateX(5deg) translateY(0);
+                     }
+                     75% {
+                     transform: rotateY(15deg) rotateX(-5deg) translateY(10px);
+                     }
+                     100% {
+                     transform: rotateY(0deg) rotateX(0deg) translateY(0);
+                     }
+                     }
+                     .animate-3d-float {
+                     animation: float3D 4s ease-in-out infinite;
+                     transform-origin: center center;
+                     }
+                  </style>
+                  <!-- <img src="https://cdn-icons-png.flaticon.com/512/10473/10473628.png" alt="Icon" width="120"
+                     height="120"> -->
+               </div>
+            </div>
+            <div class="text-center mb-12">
+               <h3 class="text-3xl font-bold text-[darkcyan] mb-6">
+                  Ready to Extract Terms
+               </h3>
+               <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 max-w-6xl mx-auto">
+                  <div
+                     class="group relative bg-white rounded-2xl p-5 border border-gray-100 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_20px_60px_rgb(59,130,246,0.08)] transition-all duration-300">
+                     <div
+                        class="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                     </div>
+                     <div class="relative">
+                        <div
+                           class="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500/10 via-blue-400/5 to-transparent flex items-center justify-center mb-4 mx-auto">
+                           <svg class="w-6 h-6 text-blue-500" fill="currentColor" viewBox="0 0 20 20">
+                              <path
+                                 d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z" />
+                           </svg>
+                        </div>
+                        <h4 class="font-semibold text-gray-800 mb-2 text-center text-base">Multiple Files</h4>
+                        <p class="text-xs text-gray-500 text-center leading-relaxed">Batch upload multiple files for
+                           simultaneous processing
+                        </p>
+                     </div>
+                  </div>
+                  <div
+                     class="group relative bg-white rounded-2xl p-5 border border-gray-100 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_20px_60px_rgb(16,185,129,0.08)] transition-all duration-300">
+                     <div
+                        class="absolute inset-0 bg-gradient-to-br from-emerald-500/5 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                     </div>
+                     <div class="relative">
+                        <div
+                           class="w-12 h-12 rounded-xl bg-gradient-to-br from-emerald-500/10 via-emerald-400/5 to-transparent flex items-center justify-center mb-4 mx-auto">
+                           <svg class="w-6 h-6 text-emerald-500" fill="currentColor" viewBox="0 0 20 20">
+                              <path
+                                 d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" />
+                           </svg>
+                        </div>
+                        <h4 class="font-semibold text-gray-800 mb-2 text-center text-base">Drag & Drop</h4>
+                        <p class="text-xs text-gray-500 text-center leading-relaxed">Simple drag and drop interface
+                           for easy file management
+                        </p>
+                     </div>
+                  </div>
+                  <div
+                     class="group relative bg-white rounded-2xl p-5 border border-gray-100 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_20px_60px_rgb(245,158,11,0.08)] transition-all duration-300">
+                     <div
+                        class="absolute inset-0 bg-gradient-to-br from-amber-500/5 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                     </div>
+                     <div class="relative">
+                        <div
+                           class="w-12 h-12 rounded-xl bg-gradient-to-br from-amber-500/10 via-amber-400/5 to-transparent flex items-center justify-center mb-4 mx-auto">
+                           <svg class="w-6 h-6 text-amber-500" fill="currentColor" viewBox="0 0 20 20">
+                              <path
+                                 d="M4 4a2 2 0 012-2h8a2 2 0 012 2v12a1 1 0 110 2H5a1 1 0 110-2h9V4a1 1 0 00-1-1H6a1 1 0 00-1 1v8.586l-1.293-1.293a1 1 0 00-1.414 1.414l3 3a1 1 0 001.414 0l3-3a1 1 0 00-1.414-1.414L9 12.586V4z" />
+                           </svg>
+                        </div>
+                        <h4 class="font-semibold text-gray-800 mb-2 text-center text-base">TXT Supported</h4>
+                        <p class="text-xs text-gray-500 text-center leading-relaxed">Specifically designed for text
+                           file extraction and analysis
+                        </p>
+                     </div>
+                  </div>
+                  <div
+                     class="group relative bg-white rounded-2xl p-5 border border-gray-100 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_20px_60px_rgb(168,85,247,0.08)] transition-all duration-300">
+                     <div
+                        class="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                     </div>
+                     <div class="relative">
+                        <div
+                           class="w-12 h-12 rounded-xl bg-gradient-to-br from-purple-500/10 via-purple-400/5 to-transparent flex items-center justify-center mb-4 mx-auto">
+                           <svg class="w-6 h-6 text-purple-500" fill="currentColor" viewBox="0 0 20 20">
+                              <path
+                                 d="M12 7a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0V8.414l-4.293 4.293a1 1 0 01-1.414 0L8 10.414l-4.293 4.293a1 1 0 01-1.414-1.414l5-5a1 1 0 011.414 0L11 10.586 14.586 7H12z" />
+                           </svg>
+                        </div>
+                        <h4 class="font-semibold text-gray-800 mb-2 text-center text-base">Fast Processing</h4>
+                        <p class="text-xs text-gray-500 text-center leading-relaxed">Rapid NLP algorithms for quick
+                           term extraction
+                        </p>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </main>
+      <!-- Loading Overlay -->
+      <div id="loadingOverlay" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+         <div class="bg-white rounded-2xl p-8 text-center">
             <div class="animate-spin rounded-full h-16 w-16 border-b-2 border-blue-600 mx-auto mb-4"></div>
             <p class="text-gray-700 font-semibold">Processing files...</p>
-        </div>
-    </div>
-
-    <script src="script.js"></script>
-</body>
-
+         </div>
+      </div>
+      <footer class="w-full border-t border-gray-800 bg-gray-900 py-6 mt-auto shadow-[0_-4px_12px_-2px_rgba(0,0,0,0.3)]">
+         <div class="max-w-6xl mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+               <!-- Logo Section - Enhanced with Glow -->
+               <div class="flex items-center gap-3">
+                  <div class="relative">
+                     <div
+                        class="w-11 h-11 rounded-full bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center shadow-lg shadow-black/30 border border-gray-700">
+                        <div class="text-white font-bold text-sm tracking-tight">mhs</div>
+                     </div>
+                     <div
+                        class="absolute -bottom-0.5 -right-0.5 w-3 h-3 rounded-full bg-gradient-to-br from-blue-400 to-cyan-400 border-2 border-gray-900 shadow-[0_0_8px_rgba(59,130,246,0.5)]">
+                     </div>
+                  </div>
+                  <div>
+                     <div class="text-2xl font-bold text-white">mhshan</div>
+                     <div class="flex items-center gap-1 text-xs text-gray-400 mt-0.5">
+                        <i class="fas fa-code text-cyan-400"></i>
+                        <span>Code • Design • Innovation</span>
+                     </div>
+                  </div>
+               </div>
+               <!-- Social Icons - Dark with Glow -->
+               <div class="flex items-center gap-3">
+                  <!-- LinkedIn -->
+                  <a href="https://www.linkedin.com/in/mhshan7/" target="_blank"
+                     class="w-9 h-9 rounded-full bg-gray-800 flex items-center justify-center text-gray-300 hover:bg-gray-700 hover:text-white transition-all duration-300 hover:scale-110 group relative shadow-lg shadow-black/20 hover:shadow-blue-500/20"
+                     title="LinkedIn Profile">
+                     <i class="fab fa-linkedin text-sm"></i>
+                     <div
+                        class="absolute -top-8 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gray-800 text-white text-xs px-2 py-1 rounded whitespace-nowrap pointer-events-none border border-gray-700 shadow-lg">
+                        LinkedIn
+                     </div>
+                  </a>
+                  <!-- Fiverr -->
+                  <a href="https://www.fiverr.com/mhshan" target="_blank"
+                     class="w-9 h-9 rounded-full bg-gray-800 flex items-center justify-center text-gray-300 hover:bg-gray-700 hover:text-white transition-all duration-300 hover:scale-110 group relative shadow-lg shadow-black/20 hover:shadow-green-500/20"
+                     title="Fiverr Profile">
+                     <i class="fas fa-dollar-sign text-sm"></i>
+                     <div
+                        class="absolute -top-8 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gray-800 text-white text-xs px-2 py-1 rounded whitespace-nowrap pointer-events-none border border-gray-700 shadow-lg">
+                        Fiverr
+                     </div>
+                  </a>
+                  <!-- Facebook -->
+                  <a href="https://www.facebook.com/mhshan.0" target="_blank"
+                     class="w-9 h-9 rounded-full bg-gray-800 flex items-center justify-center text-gray-300 hover:bg-gray-700 hover:text-white transition-all duration-300 hover:scale-110 group relative shadow-lg shadow-black/20 hover:shadow-blue-600/20"
+                     title="Facebook Page">
+                     <i class="fab fa-facebook text-sm"></i>
+                     <div
+                        class="absolute -top-8 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gray-800 text-white text-xs px-2 py-1 rounded whitespace-nowrap pointer-events-none border border-gray-700 shadow-lg">
+                        Facebook
+                     </div>
+                  </a>
+                  <!-- Twitter -->
+                  <a href="https://twitter.com/mhshan7" target="_blank"
+                     class="w-9 h-9 rounded-full bg-gray-800 flex items-center justify-center text-gray-300 hover:bg-gray-700 hover:text-white transition-all duration-300 hover:scale-110 group relative shadow-lg shadow-black/20 hover:shadow-sky-500/20"
+                     title="Twitter Profile">
+                     <i class="fab fa-twitter text-sm"></i>
+                     <div
+                        class="absolute -top-8 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gray-800 text-white text-xs px-2 py-1 rounded whitespace-nowrap pointer-events-none border border-gray-700 shadow-lg">
+                        Twitter
+                     </div>
+                  </a>
+                  <!-- Dribbble -->
+                  <a href="https://dribbble.com/mhshan" target="_blank"
+                     class="w-9 h-9 rounded-full bg-gray-800 flex items-center justify-center text-gray-300 hover:bg-gray-700 hover:text-white transition-all duration-300 hover:scale-110 group relative shadow-lg shadow-black/20 hover:shadow-pink-500/20"
+                     title="Dribbble Portfolio">
+                     <i class="fab fa-dribbble text-sm"></i>
+                     <div
+                        class="absolute -top-8 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gray-800 text-white text-xs px-2 py-1 rounded whitespace-nowrap pointer-events-none border border-gray-700 shadow-lg">
+                        Dribbble
+                     </div>
+                  </a>
+               </div>
+               <!-- Copyright & Info - Dark Theme -->
+               <div class="text-center md:text-right">
+                  <div class="text-xs text-gray-400 mb-1">
+                     © 2025 • Developed by <span class="font-semibold text-white">mhshan</span>
+                  </div>
+                  <div class="flex items-center justify-center md:justify-end gap-2 text-xs">
+                     <div
+                        class="flex items-center gap-1 px-2 py-1 rounded-full bg-gray-800 text-green-400 border border-gray-700 shadow-inner">
+                        <div class="w-2 h-2 rounded-full bg-green-500 shadow-[0_0_6px_rgba(34,197,94,0.6)]"></div>
+                        <span class="font-medium">System Active</span>
+                     </div>
+                     <span class="text-gray-700">|</span>
+                     <span class="text-gray-500 font-mono">v2.0.0</span>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </footer>
+      <!-- Optional: Add this CSS for subtle glow effects -->
+      <style>
+         /* Add subtle pulse animation to the active dot */
+         @keyframes subtle-pulse {
+         0%,
+         100% {
+         opacity: 1;
+         box-shadow: 0 0 6px rgba(34, 197, 94, 0.6);
+         }
+         50% {
+         opacity: 0.8;
+         box-shadow: 0 0 10px rgba(34, 197, 94, 0.8);
+         }
+         }
+         /* Add this class to any element for glow pulse */
+         .glow-pulse {
+         animation: subtle-pulse 2s ease-in-out infinite;
+         }
+         /* Apply pulse to the green dot */
+         footer .bg-green-500 {
+         animation: subtle-pulse 2s ease-in-out infinite;
+         }
+         /* Hover effects for social icons */
+         footer a:hover i {
+         filter: drop-shadow(0 0 4px currentColor);
+         }
+      </style>
+   </body>
 </html>

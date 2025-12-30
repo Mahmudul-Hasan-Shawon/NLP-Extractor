@@ -1,0 +1,89 @@
+## NOTES
+
+
+## CONTENT STRUCTURE
+* Images: 12 - 36
+* Headings: 16 - 39
+* Characters: 7604 - 12162
+* Paragraphs: 28 - Infinity
+* Words: 1117 - 1285
+
+## IMPORTANT TERMS TO USE
+_Make sure to include those as many times as stated._
+* entry point weapons detection: 1 - 1
+* weapons detection system: 7 - 15
+* weapon detection technology: 3 - 15
+* security measures: 1 - 2
+* metal detectors: 3 - 8
+* security personnel: 1 - 3
+* weapons detection: 13 - 26
+* unlike metal detectors: 1 - 2
+* potential threats: 2 - 4
+* surveillance cameras: 1 - 2
+* security teams: 3 - 7
+* entry points: 1 - 3
+* public safety: 3 - 5
+* intelligent analysis: 1 - 2
+* traditional metal detectors: 1 - 5
+* concealed weapons: 3 - 8
+* enhance safety: 1 - 1
+* metallic objects: 1 - 3
+* educational institutions: 1 - 2
+* security staff: 1 - 3
+* proactive approach: 1 - 2
+* public spaces: 1 - 2
+* restricted areas: 1 - 3
+* high throughput screening: 1 - 2
+* individuals walk: 1 - 2
+* security: 19 - 37
+* weapons: 19 - 28
+* detect: 6 - 10
+* safety: 6 - 13
+* threats: 9 - 25
+* systems: 20 - 34
+* technology: 9 - 28
+* detection system: 8 - 17
+* firearms: 2 - 3
+* example: 1 - 2
+* detection: 16 - 29
+* effective use: 1 - 2
+* alerts: 4 - 6
+* response: 2 - 6
+* advantages: 1 - 3
+* high rate: 1 - 1
+* real time: 3 - 11
+* methods: 1 - 3
+* explosives: 1 - 2
+* respond: 2 - 4
+* resources: 1 - 3
+* schools: 9 - 29
+* ability: 2 - 5
+* integration: 2 - 6
+* guns: 1 - 2
+* enabling: 2 - 5
+* act: 1 - 1
+* camera: 2 - 5
+* visual: 2 - 4
+* testing: 3 - 7
+* create: 1 - 2
+* essential: 1 - 1
+* categories: 1 - 2
+* presence: 1 - 3
+* movement: 1 - 1
+* power: 3 - 9
+* risk: 1 - 2
+* begin: 1 - 2
+* challenge: 1 - 3
+* primary: 1 - 2
+* implemented: 2 - 11
+* hardware: 1 - 3
+
+## OTHER RELEVANT TERMS
+_Treat them as inspiration and include as many as possible_
+
+
+## QUESTIONS TO ANSWER
+* How many cameras can you disable entry point?
+* How to do stealth in entry point?
+* How does opengate weapons detection work?
+* How to knock out guards in entry point?

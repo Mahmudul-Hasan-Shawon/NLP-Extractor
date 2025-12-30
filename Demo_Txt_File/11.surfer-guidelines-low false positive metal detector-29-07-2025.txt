@@ -1,0 +1,98 @@
+## NOTES
+
+
+## CONTENT STRUCTURE
+* Images: 10 - 21
+* Headings: 11 - 20
+* Characters: 8230 - 12098
+* Paragraphs: 60 - Infinity
+* Words: 1329 - 1528
+
+## IMPORTANT TERMS TO USE
+_Make sure to include those as many times as stated._
+* low false positive metal detector: 1 - 1
+* metal detector: 14 - 44
+* metal detection systems: 2 - 10
+* production line: 1 - 3
+* metal free zone: 2 - 5
+* ground balance: 1 - 3
+* false rejects: 5 - 9
+* silver coin: 1 - 2
+* reduce false rejects: 2 - 6
+* product signal: 1 - 3
+* product stream: 1 - 2
+* metal: 28 - 78
+* detector: 22 - 50
+* product effect: 2 - 8
+* material: 2 - 3
+* system: 5 - 13
+* iron: 2 - 4
+* identify: 2 - 6
+* signals: 6 - 14
+* packaging: 3 - 8
+* point: 2 - 6
+* equipped: 2 - 5
+* coil: 5 - 13
+* ground: 4 - 12
+* most cases: 1 - 2
+* happen: 1 - 2
+* line: 4 - 10
+* matter: 1 - 2
+* error: 2 - 7
+* pass: 2 - 5
+* detection: 6 - 22
+* lead: 3 - 10
+* technology: 1 - 3
+* alarm: 1 - 1
+* electronics: 1 - 3
+* log: 1 - 2
+* security: 1 - 2
+* settings: 4 - 6
+* moisture: 1 - 3
+* machine: 3 - 5
+* light: 1 - 3
+* detect: 4 - 12
+* industries: 1 - 3
+* sensitivity: 3 - 5
+* temperature: 3 - 10
+* conductive: 4 - 15
+* normal: 1 - 2
+* determine: 1 - 1
+* searching: 2 - 3
+* stick: 1 - 3
+* assistance: 1 - 3
+* knowledge: 1 - 2
+* factors: 2 - 7
+* feet: 1 - 3
+* affect: 1 - 2
+* conductivity: 3 - 7
+* carried: 1 - 2
+* body: 1 - 2
+* figured: 1 - 3
+* achieve: 2 - 4
+* sense: 1 - 5
+* power: 2 - 6
+* eliminate: 1 - 2
+* position: 1 - 2
+* operation: 2 - 3
+* shape: 1 - 2
+* frequency: 3 - 6
+* company: 1 - 3
+* creates: 2 - 5
+* optimized: 1 - 3
+* meat: 1 - 3
+* operate: 2 - 5
+* guys: 1 - 2
+* speed: 1 - 2
+* page: 2 - 7
+* present: 2 - 6
+
+## OTHER RELEVANT TERMS
+_Treat them as inspiration and include as many as possible_
+
+
+## QUESTIONS TO ANSWER
+* Why is my metal detector giving false readings?
+* What are the three golden rules of metal detecting?
+* Why is metal detecting illegal?
+* What technique reduces false signals in metal detecting?
